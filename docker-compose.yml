@@ -1,0 +1,20 @@
+version: '3.1'
+services:
+  odoo:
+    user: root
+    image: odoo:14.0
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    command: sleep infinity
+    volumes:
+      - ./odoo_addons:/usr/lib/python3/dist-packages/odoo/extra-addons:cached
+      - ./config:/usr/lib/python3/dist-packages/odoo/odoo
+      - ./.vscode:/usr/lib/python3/dist-packages/odoo/.vscode:cached
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo

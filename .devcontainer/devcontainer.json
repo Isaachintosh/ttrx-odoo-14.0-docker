@@ -1,0 +1,19 @@
+{
+	"name": "Odoo 14",
+	"dockerComposeFile": [
+		"../docker-compose.yml"
+	],
+	"service": "odoo",
+	"workspaceFolder": "/usr/lib/python3/dist-packages/odoo",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"scapigliato.vsc-odoo-development",
+				"jigar-patel.OdooSnippets",
+				"redhat.vscode-xml",
+				"mechatroner.rainbow-csv"
+			]
+		}
+	}
+}
