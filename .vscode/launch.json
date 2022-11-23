@@ -8,7 +8,7 @@
             "program": "/usr/bin/odoo",
             "args": [
                 "-c",
-                "/usr/lib/python3/dist-packages/odoo/odoo/odoo.conf",
+                "/usr/lib/python3/dist-packages/odoo/odoo/ttrx-odoo-14.0.conf",
                 "--dev",
                 "xml"
             ],
