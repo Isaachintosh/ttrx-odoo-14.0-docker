@@ -9,7 +9,7 @@ services:
       - "8069:8069"
     command: sleep infinity
     volumes:
-      - ./odoo_addons:/usr/lib/python3/dist-packages/odoo/extra-addons:cached
+      - ./extra-addons:/usr/lib/python3/dist-packages/odoo/extra-addons:cached
       - ./config:/usr/lib/python3/dist-packages/odoo/odoo
       - ./.vscode:/usr/lib/python3/dist-packages/odoo/.vscode:cached
   db:
