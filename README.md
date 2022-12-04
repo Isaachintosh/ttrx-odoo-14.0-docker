@@ -1,27 +1,3 @@
-<<<<<<< HEAD
-# Welcome to the Odoo Docker Compose Builder!
-
-This project aims to provide an automation level to mount the basic structure to develop using Odoo Framework, also managing the PostgreSQL Databases using PgAdmin4
-
-## First Steps
-
-To use this project it is important to have some requirements fullfilled:
-
-- If you want to use Linux Terminal into Windows, please <a href="https://learn.microsoft.com/pt-br/windows/wsl/install" target="_blank">Install WSL2</a>
-
-- Install the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers" target="_blank">Dev Container Extension for VSCode</a>
-
-
-- Access the <a href="" target="_blank">Odoo Project on Github</a>
-
-- <a href="" target="_blank"></a>
-
-## Default Localhost Paths
-
-- <a href="localhost:8069" target="_blank">localhost:8069</a> - Opens the Odoo Framework
-
-- <a href="localhost:5050" target="_blank">localhost:5050</a> - Opens de PgAdmin 4 Database Manager
-=======
 # TTRX Odoo 14 Docker Container Builder
 
 ## Welcome to this project!
@@ -100,6 +76,58 @@ You can notice that will appear a floating menu containing some actions, that ar
 
 
 #
-## Restarting the Odoo Server
->>>>>>> 46a0c8666f7f1b74f83893df6269f6a55c2e7f9d
+## Configuring PGAdmin4
 
+Once you conclude the initialization of the Odoo Server, we need to create a local server instance into the pgadmin manager.
+
+To do this we gonna access the link below in the web browser:
+
+<a href="http://localhost:5050">http://localhost:5050</a>
+
+The server will show this screen in the browser
+
+<img src="./static/img/pgadmin4-in-browser.png"/>
+
+<br/>
+<br/>
+
+To login, just type de default e-mail and password:
+
+    email: pgadmin4@pgadmin.org
+    password: admin@2022
+
+<br/>
+<br/>
+
+Now we gonna click in <strong>Add New Server</strong>
+
+<img src="./static/img/pgAdmin-4-add-new-server.png"/>
+
+<br/>
+<br/>
+
+The system will show a wizard, where we gonna set up our db server inside pgadmin.
+The name will be "db", at the <strong>General</strong> options, as shown in the screenshot below
+
+<img src="./static/img/pgAdmin-4-new-server-01.png"/>
+
+<br/>
+<br/>
+
+Now at the <strong>Connection</strong> option, we gonna set up the host, username and password. That will be:
+
+    host: db
+    username: odoo
+    password: odoo
+    remember password?: checked (activated)
+
+<img src="./static/img/pgAdmin-4-new-server-02.png">
+
+<br/>
+<br/>
+
+Just type at the <strong>Save</strong> button to save the parameters.
+
+And the system will update the screen as shown below:
+
+<img src="./static/img/pgAdmin-4-db-server.png">
