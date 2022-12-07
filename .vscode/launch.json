@@ -13,7 +13,10 @@
                 "xml"
             ],
             "justMyCode": false,
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "env": {
+                "GEVENT_SUPPORT": "True"
+            }
         }
     ]
 }
