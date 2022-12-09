@@ -8,14 +8,13 @@
             "program": "/usr/bin/odoo",
             "args": [
                 "-c",
-                "/usr/lib/python3/dist-packages/odoo/odoo/ttrx-odoo-14.0.conf",
-                "--dev",
-                "xml"
+                "/usr/lib/python3/dist-packages/odoo/odoo/ttrx-odoo-14.0.conf"
             ],
             "justMyCode": false,
             "console": "integratedTerminal",
             "env": {
-                "GEVENT_SUPPORT": "True"
+                "GEVENT_SUPPORT": "True",
+                "UPGRADE_PATH": "l10n_br_fiscal"
             }
         }
     ]

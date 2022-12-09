@@ -74,6 +74,12 @@ Now click at the Play Icon to Begin the Debug
 
 You can notice that will appear a floating menu containing some actions, that are Pause/Continue | Jump next Step | Next Step | Previous Step | Restart | Stop
 
+#
+## Accessing Odoo Server at Web Broser
+
+To access the Odoo Server, just open this address:
+
+<a href="http://localhost:8072">http://localhost:8072</a>
 
 #
 ## Configuring PGAdmin4
@@ -131,3 +137,15 @@ Just type at the <strong>Save</strong> button to save the parameters.
 And the system will update the screen as shown below:
 
 <img src="./static/img/pgAdmin-4-db-server.png">
+
+#
+## Python Dependencies for BR Fiscal Databases
+
+If you gonna restore or use Fiscal Brazilian Database Backups you'll need to install some python lib dependencies, that are located inside extra-adoons/localization/brazil/br2
+
+To do this, you will type this command at the terminal, BEFORE load the Database Backup:
+
+    pip3 install --upgrade pip wheel "setuptools==58.0.0"
+
+    pip install -r /usr/lib/python3/dist-packages/odoo/extra-addons/localization/brazil/br2/requirements.txt
+
