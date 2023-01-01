@@ -31,7 +31,7 @@ isodate==0.6.0
 Jinja2==2.10
 libsass==0.17.0
 lxml==4.3.2
-Mako==1.0.7
+Mako==1.2.2
 MarkupSafe==1.1.0
 mock==2.0.0
 multidict==4.5.2
