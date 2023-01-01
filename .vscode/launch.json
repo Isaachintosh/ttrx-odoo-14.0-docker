@@ -5,16 +5,31 @@
             "name": "Odoo 14",
             "type": "python",
             "request": "launch",
+            
+            // path to the Odoo Server Binary program
             "program": "/usr/bin/odoo",
+            
+            // commands to perform with the default vscode odoo server starter script
             "args": [
                 "-c",
-                "/usr/lib/python3/dist-packages/odoo/odoo/ttrx-odoo-14.0.conf"
+                // OBS.: Use ONLY ONE of the .conf files to start the Odoo Server!
+                
+                "/usr/lib/python3/dist-packages/odoo/odoo/odoo-us-14.0.conf",
+                // If you wanna work with US Based Odoo Databases, comment odoo-br-14.0.conf
+                
+                // "/usr/lib/python3/dist-packages/odoo/odoo/odoo-br-14.0.conf"
+                // if you wanna work with BR Based Odoo Databases, comment odoo-us-14.0.conf
             ],
+            
+            // allows to access odoo files and folders located into the workspace folder
             "justMyCode": false,
+            
+            // enables the debug server starter mode to use the opened terminal
             "console": "integratedTerminal",
+            
+            // environmental variables
             "env": {
                 "GEVENT_SUPPORT": "True",
-                "UPGRADE_PATH": "l10n_br_fiscal"
             }
         }
     ]

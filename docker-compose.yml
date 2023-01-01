@@ -1,45 +1,95 @@
 version: '3.1'
 services:
+  # Odoo 14 container based on Odoo Official image avaliable at Docker Hub
   odoo:
+    # originally the official image of the odoo (docker hub) does not come with elevated user priviledges
+    # so, to elevate this level, we declare the default user as root
     user: root
-    image: odoo:14.0
+    image: odoo:14
     depends_on:
       - db
     ports:
       - "8069:8069"
+    
+    # this command is used to make the container not start automatically
+    # so, the server will start when we start the debug of the vscode
     command: sleep infinity
+    
+    # local folders are targeted to be migrated to the odoo development vscode environment
     volumes:
+      # odoo_addons files will be moved into the extra-addons folder into the container
       - ./odoo_addons:/usr/lib/python3/dist-packages/odoo/extra-addons:cached
+      
+      # .config contains the odoo.conf file used to start the odoo server
       - ./config:/usr/lib/python3/dist-packages/odoo/odoo
+      
+      # .vscode contains the scripts used to start the debug mode integrated with the server starter
       - ./.vscode:/usr/lib/python3/dist-packages/odoo/.vscode
     networks:
       - postgres
   db:
+    # as default, the postgres image does not have elevated permissions
+    # so, we elevate the level declaring the default user as root
     user: root
     image: postgres:${POSTGRES_VERSION}
+    
+    # this environment is used to appoint the user, password and database that will be used in postgres db
     environment:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_DB=${POSTGRES_DB}
     ports:
       - "${POSTGRES_PORT}:5432"
+    
+    # to persist the data that was generated into the postgres, we declare a local folder to integrate with the db storage
+    # so, independently if you create or kill the container instance, the db data will be saved in this folder
     volumes:
       - ./postgresql:/var/lib/postgresql/data
     networks:
       - postgres
-  pgadmin4:
-    user: root
-    image: dpage/pgadmin4
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
-      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
-    ports:
-      - "${PGADMIN_PORT}:80"
-    depends_on:
-      - db
-    networks:
-      - postgres
-    restart: unless-stopped
 networks:
+  
+  # here we declare the virtual network that will integrate the containers
+  # the name can be what you desire, but remember to update the network name into the odoo14 and db containers.
   postgres:
     driver: bridge
+
+  # if you like to activate the pgadmin, just uncomment this section
+  # pgadmin is a solution to manipulate Databases with a GUI Manager
+  # pgadmin4:
+  #   user: root
+  #   image: dpage/pgadmin4
+  #   environment:
+  #     - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
+  #     - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
+  #   ports:
+  #     - "${PGADMIN_PORT}:80"
+  #   depends_on:
+  #     - db
+  #   networks:
+  #     - postgres
+  #   restart: unless-stopped
+  # 
+  # ======================================================================
+  # [WIP] - Rancher Container
+  # ======================================================================
+  # For now, this set-up below is in development.
+  # If you uncomment this section, the composer will not build the containers. So, this is a spoiler that what will at next commits ^^
+  # Rancher is a Kubernets GUI Manager
+  # It is used to simplify the management of kubernets and manipulation of containers
+  # rancher:
+  #   user: root
+  #   image: rancher/rancher:latest
+  #   restart: always
+  #   ports:
+  #     - "8080:80"
+  #     - "8080:443"
+  #   volumes:
+  #     - "./rancher-data:/var/lib/rancher"
+  #   networks:
+  #     - postgres
+
+# Volumes declared at the same level of services is used to configure and build data-containers
+# data containers are used to isolate the storage of the application
+# volumes:
+#   rancher-data:

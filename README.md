@@ -81,7 +81,17 @@ To access the Odoo Server, just open this address:
 
 <a href="http://localhost:8072">http://localhost:8072</a>
 
-#
+# [WIP] PGAdmin4
+## Before begin...
+
+This setup is avaliable for those who want to use PGAdmin to manage in a easely way Postgre Databases through GUI.
+
+By default, its container configurations will be commented, for performance purposes.
+
+If you want to enable its build, first, and foremost, you will need to confirm that your device is appropriately configured to support Docker running kubernets.
+
+In summary, you will need to validate that your device has de minnimum requirements to run a kubernets setup environment, principally, at minimum from 2 GB RAM or 4 GB RAM avaliable.
+
 ## Configuring PGAdmin4
 
 Once you conclude the initialization of the Odoo Server, we need to create a local server instance into the pgadmin manager.
