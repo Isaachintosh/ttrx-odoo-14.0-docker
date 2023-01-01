@@ -59,7 +59,7 @@ pyparsing==2.2.0
 PyPDF2==1.26.0
 pyserial==3.4
 python-dateutil==2.7.3
-python-ldap==3.1.0
+python-ldap==3.4.0
 python-slugify==2.0.1
 python-stdnum==1.10
 pytz==2019.1
