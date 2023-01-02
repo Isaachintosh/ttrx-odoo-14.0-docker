@@ -64,7 +64,7 @@ python-slugify==2.0.1
 python-stdnum==1.10
 pytz==2019.1
 pyusb==1.0.2
-PyYAML==3.13
+PyYAML==5.4
 qrcode==6.1
 reportlab==3.5.55
 requests==2.21.0
