@@ -28,7 +28,7 @@ greenlet==0.4.15
 idna==2.6
 importlib-metadata==5.0.0
 isodate==0.6.0
-Jinja2==2.10
+Jinja2==2.11.3
 libsass==0.17.0
 lxml==4.9.1
 Mako==1.2.2
